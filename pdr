@@ -1,0 +1,19 @@
+set grid
+set style line 1 lc rgb '#ff0000' pt 5 ps 1.5 lt 1 lw 2 # --- red
+#set style line 2 lc rgb '#0000ff' pt 7 ps 1 lt 1 lw 2 # --- blue
+set style line 2 lt 1 lc rgb "#0000ff" lw 2 pt 7 ps 1.5
+set style line 3 lt 1 lc rgb "#00ff00" lw 2 pt 9 ps 1.5
+set style line 4 lt 1 lc rgb "#ff00ff" lw 2 pt 13 ps 1.5
+set style line 5 lt 1 lc rgb "#800000" lw 2 pt 15 ps 1.5
+
+
+set xrange [70:100]
+set yrange [55:75]
+set ytics 5
+set xtics 10
+set xlabel 'Rx (\%)'
+set ylabel 'Packet Delivery Rate (%)'
+plot 'pdr_data' u 1:2 w lp ls 1 t 'Central', 'pdr_data' u 1:3 w lp ls 2 t 'Predictor Proxy-JRC','pdr_data' u 1:4 w lp ls 3 t 'Algorithm 1', 'pdr_data' u 1:5 w lp ls 4 t 'Algorithm 2','pdr_data' u 1:6 w lp ls 5 t 'Algorithm 3'
+set terminal postscript eps enhanced color solid linewidth 0.8 'Helvetica, 15'
+set output '20_node_pdr.eps'
+replot
